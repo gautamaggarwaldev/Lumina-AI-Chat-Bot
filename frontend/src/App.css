@@ -1,0 +1,219 @@
+/* General Styles */
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* Modern gradient background */
+  color: #e0e0e0; /* Lighter text for better contrast */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Chat Container */
+.chat-container {
+  width: 90%;
+  max-width: 1000px;
+  height: 85vh; /* Slightly taller for better visual appeal */
+  background: rgba(255, 255, 255, 0.1); /* Semi-transparent white background */
+  border-radius: 20px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* Stronger shadow for depth */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  backdrop-filter: blur(10px); /* Glassmorphism effect */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border */
+}
+
+/* Chat Header */
+.chat-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.chat-header h2 {
+  margin: 0;
+  font-size: 1.3rem; /* Slightly larger heading */
+  font-weight: 600;
+  color: #fff; /* White text */
+}
+
+.chat-header .actions {
+  display: flex;
+  gap: 12px;
+}
+
+.chat-header .actions button {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  cursor: pointer;
+  color: #ccc;
+  border-radius: 50%;
+  width: 40px; /* Slightly larger buttons */
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.chat-header .actions button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+/* Chat Messages */
+.chat-messages {
+  flex: 1;
+  padding: 24px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px; /* Slightly larger gap */
+  background: transparent; /* Transparent background */
+}
+
+/* Message Bubbles */
+.message {
+  max-width: 80%; /* Slightly wider max width */
+  padding: 14px 20px; /* Slightly larger padding */
+  border-radius: 20px; /* More rounded corners */
+  position: relative;
+  animation: fadeIn 0.3s ease;
+  line-height: 1.6; /* Improved line height */
+  font-size: 1rem; /* Slightly larger font */
+}
+
+.message.user {
+  align-self: flex-end;
+  background: linear-gradient(135deg, #606c88, #3f4c6b); /* Gradient for user messages */
+  color: #fff;
+  border-bottom-right-radius: 8px;
+}
+
+.message.ai {
+  align-self: flex-start;
+  background: rgba(255, 255, 255, 0.08); /* Semi-transparent background for AI messages */
+  color: #e0e0e0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom-left-radius: 8px;
+}
+
+.message time {
+  font-size: 0.8rem;
+  opacity: 0.7;
+  margin-top: 8px; /* Slightly larger margin */
+  display: block;
+}
+
+/* Typing Animation */
+.typing-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 20px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  width: fit-content;
+  margin: 10px 0;
+  border-bottom-left-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.typing-indicator span {
+  width: 8px;
+  height: 8px;
+  background-color: #ccc;
+  border-radius: 50%;
+  animation: typing 1.4s infinite;
+}
+
+.typing-indicator span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes typing {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Input Area */
+.input-area {
+  display: flex;
+  gap: 12px;
+  padding: 18px 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  align-items: center;
+}
+
+.input-area input {
+  flex: 1;
+  padding: 14px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #e0e0e0;
+  outline: none;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 1rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.input-area input:focus {
+  border-color: #818cf8;
+  box-shadow: 0 0 0 2px rgba(129, 140, 248, 0.3);
+}
+
+.input-area input::placeholder {
+  color: #a0aec0;
+}
+
+.input-area button {
+  padding: 14px;
+  border: none;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #606c88, #3f4c6b);
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+}
+
+.input-area button:hover {
+  background: linear-gradient(135deg, #4a5568, #374151);
+  transform: scale(1.08);
+}
+
+.input-area button:disabled {
+  background-color: #42a556;
+}
